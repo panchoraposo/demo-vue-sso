@@ -5,8 +5,12 @@ import * as Keycloak from 'keycloak-js';
 
 Vue.use(VueLogger);
 
+const sso_url = process.env.SSO_ENDPOINT || 'http://localhost:8080/auth';
+const sso_realm = process.env.SSO_REALM || 'MyDemo';
+const sso_clientId = process.env.SSO_CLIENTID || 'my-react-client';
+
 let initOptions = {
-  url: 'http://localhost:8080/auth', realm: 'MyDemo', clientId: 'my-react-client', onLoad: 'login-required'
+  url: sso_url, realm: sso_realm, clientId: sso_clientId, onLoad: 'login-required'
 }
 
 let keycloak = Keycloak(initOptions);
